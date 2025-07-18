@@ -1,204 +1,184 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2761
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red70\green137\blue204;\red23\green24\blue24;\red140\green211\blue254;
-\red202\green202\blue202;\red109\green109\blue109;\red194\green126\blue101;\red109\green115\blue120;\red212\green212\blue212;
-\red113\green192\blue131;\red167\green197\blue152;\red183\green111\blue247;\red54\green192\blue160;\red246\green124\blue48;
-\red163\green79\blue131;}
-{\*\expandedcolortbl;;\cssrgb\c33725\c61176\c83922;\cssrgb\c11765\c12157\c12549;\cssrgb\c61176\c86275\c99608;
-\cssrgb\c83137\c83137\c83137;\cssrgb\c50196\c50196\c50196;\cssrgb\c80784\c56863\c47059;\cssrgb\c50196\c52549\c54510;\cssrgb\c86275\c86275\c86275;
-\cssrgb\c50588\c78824\c58431;\cssrgb\c70980\c80784\c65882;\cssrgb\c77255\c54118\c97647;\cssrgb\c23922\c78824\c69020;\cssrgb\c98039\c56471\c24314;
-\cssrgb\c70588\c40000\c58431;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh14820\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced UPI QR Code Generator</title>
+    
+    <!-- 1. Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. QR Code Generation Library (qrcode.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
-\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 <!DOCTYPE\cf4 \strokec4  html\cf2 \strokec2 >\cf5 \cb1 \strokec5 \
-\pard\pardeftab720\partightenfactor0
-\cf6 \cb3 \strokec6 <\cf2 \strokec2 html\cf5 \strokec5  \cf4 \strokec4 lang\cf6 \strokec6 =\cf7 \strokec7 "en"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cf6 \cb3 \strokec6 <\cf2 \strokec2 head\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb3     \cf6 \strokec6 <\cf2 \strokec2 meta\cf5 \strokec5  \cf4 \strokec4 charset\cf6 \strokec6 =\cf7 \strokec7 "UTF-8"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 meta\cf5 \strokec5  \cf4 \strokec4 name\cf6 \strokec6 =\cf7 \strokec7 "viewport"\cf5 \strokec5  \cf4 \strokec4 content\cf6 \strokec6 =\cf7 \strokec7 "width=device-width, initial-scale=1.0"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 title\cf6 \strokec6 >\cf5 \strokec5 Advanced UPI QR Code Generator\cf6 \strokec6 </\cf2 \strokec2 title\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cb1 \
-\cb3     \cf8 \strokec8 <!-- 1. Tailwind CSS for styling -->\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 script\cf5 \strokec5  \cf4 \strokec4 src\cf6 \strokec6 =\cf7 \strokec7 "https://cdn.tailwindcss.com"\cf6 \strokec6 ></\cf2 \strokec2 script\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cb1 \
-\cb3     \cf8 \strokec8 <!-- 2. QR Code Generation Library (qrcode.js) -->\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 script\cf5 \strokec5  \cf4 \strokec4 src\cf6 \strokec6 =\cf7 \strokec7 "https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"\cf6 \strokec6 ></\cf2 \strokec2 script\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3     \cf8 \strokec8 <!-- 3. Google Fonts for a clean look -->\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 link\cf5 \strokec5  \cf4 \strokec4 rel\cf6 \strokec6 =\cf7 \strokec7 "preconnect"\cf5 \strokec5  \cf4 \strokec4 href\cf6 \strokec6 =\cf7 \strokec7 "https://fonts.googleapis.com"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 link\cf5 \strokec5  \cf4 \strokec4 rel\cf6 \strokec6 =\cf7 \strokec7 "preconnect"\cf5 \strokec5  \cf4 \strokec4 href\cf6 \strokec6 =\cf7 \strokec7 "https://fonts.gstatic.com"\cf5 \strokec5  \cf4 \strokec4 crossorigin\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 link\cf5 \strokec5  \cf4 \strokec4 href\cf6 \strokec6 =\cf7 \strokec7 "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"\cf5 \strokec5  \cf4 \strokec4 rel\cf6 \strokec6 =\cf7 \strokec7 "stylesheet"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 style\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3         \cf8 \strokec8 /* Use the Inter font family */\cf5 \cb1 \strokec5 \
-\cb3         \cf2 \strokec2 body\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3             \cf4 \strokec4 font-family:\cf5 \strokec5  \cf10 \strokec10 'Inter'\cf9 \strokec9 ,\cf5 \strokec5  \cf7 \strokec7 sans-serif\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3         \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\cb3         \cf8 \strokec8 /* Ensure the QR code canvas/img fills its container */\cf5 \cb1 \strokec5 \
-\cb3         \cf2 \strokec2 #qrcode\cf5 \strokec5  \cf9 \strokec9 >\cf5 \strokec5  \cf2 \strokec2 *\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3             \cf4 \strokec4 width:\cf5 \strokec5  \cf11 \strokec11 100%\cf5 \strokec5  \cf12 \strokec12 !important\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             \cf4 \strokec4 height:\cf5 \strokec5  \cf11 \strokec11 100%\cf5 \strokec5  \cf12 \strokec12 !important\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3         \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 </\cf2 \strokec2 style\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\pard\pardeftab720\partightenfactor0
-\cf6 \cb3 \strokec6 </\cf2 \strokec2 head\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cf6 \cb3 \strokec6 <\cf2 \strokec2 body\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "bg-gray-50 flex items-start justify-center min-h-screen p-4 py-8"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb3     \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "w-full max-w-md bg-white rounded-xl shadow-lg"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3         \cb1 \
-\cb3         \cf8 \strokec8 <!-- Header Section with Razorpay Theme -->\cf5 \cb1 \strokec5 \
-\cb3         \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "bg-blue-600 text-white p-6 rounded-t-xl"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3             \cf6 \strokec6 <\cf2 \strokec2 h1\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "text-2xl md:text-3xl font-bold"\cf6 \strokec6 >\cf5 \strokec5 Dynamic UPI QR Code Generator\cf6 \strokec6 </\cf2 \strokec2 h1\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3             \cf6 \strokec6 <\cf2 \strokec2 p\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "text-blue-200 mt-1"\cf6 \strokec6 >\cf5 \strokec5 Real-time QR codes for seamless payments.\cf6 \strokec6 </\cf2 \strokec2 p\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3         \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "p-6 md:p-8"\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "formContainer"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3             \cf8 \strokec8 <!-- Form Section -->\cf5 \cb1 \strokec5 \
-\cb3             \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "grid grid-cols-1 gap-6"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                 \cb1 \
-\cb3                 \cf8 \strokec8 <!-- Payee Name -->\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 <\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 label\cf5 \strokec5  \cf4 \strokec4 for\cf6 \strokec6 =\cf7 \strokec7 "payeeName"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "block text-sm font-medium text-gray-700 mb-1"\cf6 \strokec6 >\cf5 \strokec5 Your Name (Payee)\cf6 \strokec6 </\cf2 \strokec2 label\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 input\cf5 \strokec5  \cf4 \strokec4 type\cf6 \strokec6 =\cf7 \strokec7 "text"\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "payeeName"\cf5 \strokec5  \cf4 \strokec4 placeholder\cf6 \strokec6 =\cf7 \strokec7 "e.g. Acme Fresh Produce"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3                 \cf8 \strokec8 <!-- UPI ID Input -->\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 <\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 label\cf5 \strokec5  \cf4 \strokec4 for\cf6 \strokec6 =\cf7 \strokec7 "upiId"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "block text-sm font-medium text-gray-700 mb-1"\cf6 \strokec6 >\cf5 \strokec5 Your UPI ID (VPA)\cf6 \strokec6 </\cf2 \strokec2 label\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 input\cf5 \strokec5  \cf4 \strokec4 type\cf6 \strokec6 =\cf7 \strokec7 "text"\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "upiId"\cf5 \strokec5  \cf4 \strokec4 placeholder\cf6 \strokec6 =\cf7 \strokec7 "yourname@oksbi"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3                 \cf8 \strokec8 <!-- Optional Fields -->\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "grid grid-cols-1 md:grid-cols-2 gap-4"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                         \cf6 \strokec6 <\cf2 \strokec2 label\cf5 \strokec5  \cf4 \strokec4 for\cf6 \strokec6 =\cf7 \strokec7 "amount"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "block text-sm font-medium text-gray-700 mb-1"\cf6 \strokec6 >\cf5 \strokec5 Amount (Optional)\cf6 \strokec6 </\cf2 \strokec2 label\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                         \cf6 \strokec6 <\cf2 \strokec2 input\cf5 \strokec5  \cf4 \strokec4 type\cf6 \strokec6 =\cf7 \strokec7 "number"\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "amount"\cf5 \strokec5  \cf4 \strokec4 placeholder\cf6 \strokec6 =\cf7 \strokec7 "e.g. 100"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                         \cf6 \strokec6 <\cf2 \strokec2 label\cf5 \strokec5  \cf4 \strokec4 for\cf6 \strokec6 =\cf7 \strokec7 "remarks"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "block text-sm font-medium text-gray-700 mb-1"\cf6 \strokec6 >\cf5 \strokec5 Remarks (Optional)\cf6 \strokec6 </\cf2 \strokec2 label\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                         \cf6 \strokec6 <\cf2 \strokec2 input\cf5 \strokec5  \cf4 \strokec4 type\cf6 \strokec6 =\cf7 \strokec7 "text"\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "remarks"\cf5 \strokec5  \cf4 \strokec4 placeholder\cf6 \strokec6 =\cf7 \strokec7 "e.g. For Invoice #123"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3                 \cf8 \strokec8 <!-- QR Code Display Section (Now always visible) -->\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "qrCodeContainer"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "flex flex-col items-center pt-4 border-t mt-4"\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 h2\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "qrTitle"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "text-lg font-semibold text-gray-700 mb-4"\cf6 \strokec6 >\cf5 \strokec5 QR Code Preview\cf6 \strokec6 </\cf2 \strokec2 h2\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 div\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "qrcode"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "p-4 bg-white border rounded-lg shadow-inner w-64 h-64"\cf6 \strokec6 ></\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 p\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "qrHelperText"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "text-gray-500 text-sm mt-2 text-center"\cf6 \strokec6 >\cf5 \strokec5 Enter your details above to generate a QR code.\cf6 \strokec6 </\cf2 \strokec2 p\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                     \cf6 \strokec6 <\cf2 \strokec2 button\cf5 \strokec5  \cf4 \strokec4 id\cf6 \strokec6 =\cf7 \strokec7 "downloadBtn"\cf5 \strokec5  \cf4 \strokec4 class\cf6 \strokec6 =\cf7 \strokec7 "mt-6 w-full md:w-auto bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none"\cf5 \strokec5  \cf4 \strokec4 disabled\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                         Download as PNG\cb1 \
-\cb3                     \cf6 \strokec6 </\cf2 \strokec2 button\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3                 \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3         \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3     \cf6 \strokec6 </\cf2 \strokec2 div\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\
-\cb3     \cf6 \strokec6 <\cf2 \strokec2 script\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cb3         \cf8 \strokec8 // --- Element Selectors ---\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  formContainer \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'formContainer'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  downloadBtn \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'downloadBtn'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  qrcodeDiv \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'qrcode'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  qrTitle \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'qrTitle'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  qrHelperText \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'qrHelperText'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cb1 \
-\cb3         \cf8 \strokec8 // Input fields\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  payeeNameInput \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'payeeName'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  upiIdInput \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'upiId'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  amountInput \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'amount'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  remarksInput \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 getElementById\cf9 \strokec9 (\cf10 \strokec10 'remarks'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf12 \strokec12 let\cf5 \strokec5  qrcode \cf9 \strokec9 =\cf5 \strokec5  \cf12 \strokec12 null\cf9 \strokec9 ;\cf5 \strokec5  \cf8 \strokec8 // To hold the QRCode object\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // --- Placeholder QR Generation ---\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  generatePlaceholderQr \cf9 \strokec9 =\cf5 \strokec5  \cf9 \strokec9 ()\cf5 \strokec5  \cf9 \strokec9 =>\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3             qrcodeDiv\cf9 \strokec9 .\cf5 \strokec5 innerHTML \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 ''\cf9 \strokec9 ;\cf5 \strokec5  \cf8 \strokec8 // Clear previous QR\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 new\cf5 \strokec5  \cf13 \strokec13 QRCode\cf9 \strokec9 (\cf5 \strokec5 qrcodeDiv\cf9 \strokec9 ,\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 text\cf9 \strokec9 :\cf5 \strokec5  \cf10 \strokec10 "https://github.com/srikanthlogic/CashlessConsumer"\cf9 \strokec9 ,\cf5 \strokec5  \cf8 \strokec8 // Generic, non-payable link\cf5 \cb1 \strokec5 \
-\cb3                 width\cf9 \strokec9 :\cf5 \strokec5  \cf14 \strokec14 256\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 height\cf9 \strokec9 :\cf5 \strokec5  \cf14 \strokec14 256\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 colorDark\cf9 \strokec9 :\cf5 \strokec5  \cf10 \strokec10 "#d1d5db"\cf9 \strokec9 ,\cf5 \strokec5  \cf8 \strokec8 // gray-300\cf5 \cb1 \strokec5 \
-\cb3                 colorLight\cf9 \strokec9 :\cf5 \strokec5  \cf10 \strokec10 "#ffffff"\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 correctLevel\cf9 \strokec9 :\cf5 \strokec5  \cf13 \strokec13 QRCode\cf9 \strokec9 .\cf13 \strokec13 CorrectLevel\cf9 \strokec9 .\cf13 \strokec13 H\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \});\cf5 \cb1 \strokec5 \
-\cb3             qrTitle\cf9 \strokec9 .\cf5 \strokec5 textContent \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 'QR Code Preview'\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             qrHelperText\cf9 \strokec9 .\cf5 \strokec5 textContent \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 'Enter your details above to generate a QR code.'\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             downloadBtn\cf9 \strokec9 .\cf5 \strokec5 disabled \cf9 \strokec9 =\cf5 \strokec5  \cf12 \strokec12 true\cf9 \strokec9 ;\cf5 \strokec5  \cf8 \strokec8 // Disable download for placeholder\cf5 \cb1 \strokec5 \
-\cb3         \cf9 \strokec9 \};\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // --- Core Logic: Generate Real QR Code Dynamically ---\cf5 \cb1 \strokec5 \
-\cb3         \cf12 \strokec12 const\cf5 \strokec5  generateRealQrCode \cf9 \strokec9 =\cf5 \strokec5  \cf9 \strokec9 ()\cf5 \strokec5  \cf9 \strokec9 =>\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  payeeName \cf9 \strokec9 =\cf5 \strokec5  payeeNameInput\cf9 \strokec9 .\cf5 \strokec5 value\cf9 \strokec9 .\cf5 \strokec5 trim\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  payeeAddress \cf9 \strokec9 =\cf5 \strokec5  upiIdInput\cf9 \strokec9 .\cf5 \strokec5 value\cf9 \strokec9 .\cf5 \strokec5 trim\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  amount \cf9 \strokec9 =\cf5 \strokec5  amountInput\cf9 \strokec9 .\cf5 \strokec5 value\cf9 \strokec9 .\cf5 \strokec5 trim\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  remarks \cf9 \strokec9 =\cf5 \strokec5  remarksInput\cf9 \strokec9 .\cf5 \strokec5 value\cf9 \strokec9 .\cf5 \strokec5 trim\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf8 \strokec8 // 1. Check for valid inputs\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  isValid \cf9 \strokec9 =\cf5 \strokec5  payeeName \cf9 \strokec9 &&\cf5 \strokec5  payeeAddress \cf9 \strokec9 &&\cf5 \strokec5  payeeAddress\cf9 \strokec9 .\cf5 \strokec5 includes\cf9 \strokec9 (\cf10 \strokec10 '@'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf12 \strokec12 if\cf5 \strokec5  \cf9 \strokec9 (!\cf5 \strokec5 isValid\cf9 \strokec9 )\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 generatePlaceholderQr\cf9 \strokec9 ();\cf5 \strokec5  \cf8 \strokec8 // If inputs become invalid, revert to placeholder\cf5 \cb1 \strokec5 \
-\cb3                 \cf12 \strokec12 return\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf8 \strokec8 // 2. Construct the UPI String\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 let\cf5 \strokec5  upiString \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 `upi://pay?pa=\cf9 \strokec9 $\{\cf5 \strokec5 encodeURIComponent\cf9 \strokec9 (\cf5 \strokec5 payeeAddress\cf9 \strokec9 )\}\cf10 \strokec10 &pn=\cf9 \strokec9 $\{\cf5 \strokec5 encodeURIComponent\cf9 \strokec9 (\cf5 \strokec5 payeeName\cf9 \strokec9 )\}\cf10 \strokec10 `\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 if\cf5 \strokec5  \cf9 \strokec9 (\cf5 \strokec5 amount\cf9 \strokec9 )\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 upiString \cf9 \strokec9 +=\cf5 \strokec5  \cf10 \strokec10 `&am=\cf9 \strokec9 $\{\cf5 \strokec5 encodeURIComponent\cf9 \strokec9 (\cf5 \strokec5 amount\cf9 \strokec9 )\}\cf10 \strokec10 `\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 if\cf5 \strokec5  \cf9 \strokec9 (\cf5 \strokec5 remarks\cf9 \strokec9 )\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 upiString \cf9 \strokec9 +=\cf5 \strokec5  \cf10 \strokec10 `&tn=\cf9 \strokec9 $\{\cf5 \strokec5 encodeURIComponent\cf9 \strokec9 (\cf5 \strokec5 remarks\cf9 \strokec9 )\}\cf10 \strokec10 `\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\cb3             upiString \cf9 \strokec9 +=\cf5 \strokec5  \cf10 \strokec10 '&cu=INR'\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf8 \strokec8 // 3. Generate the Real QR Code\cf5 \cb1 \strokec5 \
-\cb3             qrcodeDiv\cf9 \strokec9 .\cf5 \strokec5 innerHTML \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 ''\cf9 \strokec9 ;\cf5 \strokec5  \cf8 \strokec8 // Clear placeholder\cf5 \cb1 \strokec5 \
-\cb3             qrcode \cf9 \strokec9 =\cf5 \strokec5  \cf12 \strokec12 new\cf5 \strokec5  \cf13 \strokec13 QRCode\cf9 \strokec9 (\cf5 \strokec5 qrcodeDiv\cf9 \strokec9 ,\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 text\cf9 \strokec9 :\cf5 \strokec5  upiString\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 width\cf9 \strokec9 :\cf5 \strokec5  \cf14 \strokec14 256\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 height\cf9 \strokec9 :\cf5 \strokec5  \cf14 \strokec14 256\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 colorDark\cf9 \strokec9 :\cf5 \strokec5  \cf10 \strokec10 "#000000"\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 colorLight\cf9 \strokec9 :\cf5 \strokec5  \cf10 \strokec10 "#ffffff"\cf9 \strokec9 ,\cf5 \cb1 \strokec5 \
-\cb3                 correctLevel\cf9 \strokec9 :\cf5 \strokec5  \cf13 \strokec13 QRCode\cf9 \strokec9 .\cf13 \strokec13 CorrectLevel\cf9 \strokec9 .\cf13 \strokec13 H\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \});\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf8 \strokec8 // 4. Update UI text and enable download\cf5 \cb1 \strokec5 \
-\cb3             qrTitle\cf9 \strokec9 .\cf5 \strokec5 textContent \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 'Your QR Code is Ready!'\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             qrHelperText\cf9 \strokec9 .\cf5 \strokec5 textContent \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 'Scan this with any UPI app.'\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3             downloadBtn\cf9 \strokec9 .\cf5 \strokec5 disabled \cf9 \strokec9 =\cf5 \strokec5  \cf12 \strokec12 false\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3         \cf9 \strokec9 \};\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // --- Event Listeners ---\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // Listen for any input change in the form container\cf5 \cb1 \strokec5 \
-\cb3         formContainer\cf9 \strokec9 .\cf5 \strokec5 addEventListener\cf9 \strokec9 (\cf10 \strokec10 'input'\cf9 \strokec9 ,\cf5 \strokec5  generateRealQrCode\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // Event Listener for the Download Button\cf5 \cb1 \strokec5 \
-\cb3         downloadBtn\cf9 \strokec9 .\cf5 \strokec5 addEventListener\cf9 \strokec9 (\cf10 \strokec10 'click'\cf9 \strokec9 ,\cf5 \strokec5  \cf9 \strokec9 ()\cf5 \strokec5  \cf9 \strokec9 =>\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 if\cf5 \strokec5  \cf9 \strokec9 (\cf5 \strokec5 downloadBtn\cf9 \strokec9 .\cf5 \strokec5 disabled\cf9 \strokec9 )\cf5 \strokec5  \cf12 \strokec12 return\cf9 \strokec9 ;\cf5 \strokec5  \cf8 \strokec8 // Extra safety check\cf5 \cb1 \strokec5 \
-\
-\cb3             \cf12 \strokec12 const\cf5 \strokec5  qrImage \cf9 \strokec9 =\cf5 \strokec5  qrcodeDiv\cf9 \strokec9 .\cf5 \strokec5 querySelector\cf9 \strokec9 (\cf10 \strokec10 'img'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3             \cf12 \strokec12 if\cf5 \strokec5  \cf9 \strokec9 (\cf5 \strokec5 qrImage\cf9 \strokec9 )\cf5 \strokec5  \cf9 \strokec9 \{\cf5 \cb1 \strokec5 \
-\cb3                 \cf12 \strokec12 const\cf5 \strokec5  link \cf9 \strokec9 =\cf5 \strokec5  document\cf9 \strokec9 .\cf5 \strokec5 createElement\cf9 \strokec9 (\cf10 \strokec10 'a'\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3                 link\cf9 \strokec9 .\cf5 \strokec5 href \cf9 \strokec9 =\cf5 \strokec5  qrImage\cf9 \strokec9 .\cf5 \strokec5 src\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3                 \cf12 \strokec12 const\cf5 \strokec5  safeFileName \cf9 \strokec9 =\cf5 \strokec5  payeeNameInput\cf9 \strokec9 .\cf5 \strokec5 value\cf9 \strokec9 .\cf5 \strokec5 trim\cf9 \strokec9 ().\cf5 \strokec5 replace\cf9 \strokec9 (\cf15 \strokec15 /[^a-z0-9]/\cf12 \strokec12 gi\cf9 \strokec9 ,\cf5 \strokec5  \cf10 \strokec10 '_'\cf9 \strokec9 ).\cf5 \strokec5 toLowerCase\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\cb3                 link\cf9 \strokec9 .\cf5 \strokec5 download \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 `upi-qr-code-\cf9 \strokec9 $\{\cf5 \strokec5 safeFileName \cf9 \strokec9 ||\cf5 \strokec5  \cf10 \strokec10 'payment'\cf9 \strokec9 \}\cf10 \strokec10 .png`\cf9 \strokec9 ;\cf5 \cb1 \strokec5 \
-\cb3                 document\cf9 \strokec9 .\cf5 \strokec5 body\cf9 \strokec9 .\cf5 \strokec5 appendChild\cf9 \strokec9 (\cf5 \strokec5 link\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3                 link\cf9 \strokec9 .\cf5 \strokec5 click\cf9 \strokec9 ();\cf5 \cb1 \strokec5 \
-\cb3                 document\cf9 \strokec9 .\cf5 \strokec5 body\cf9 \strokec9 .\cf5 \strokec5 removeChild\cf9 \strokec9 (\cf5 \strokec5 link\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\cb3             \cf9 \strokec9 \}\cf5 \cb1 \strokec5 \
-\cb3         \cf9 \strokec9 \});\cf5 \cb1 \strokec5 \
-\
-\cb3         \cf8 \strokec8 // --- Initial Load ---\cf5 \cb1 \strokec5 \
-\cb3         \cf8 \strokec8 // Generate the placeholder QR as soon as the page loads\cf5 \cb1 \strokec5 \
-\cb3         window\cf9 \strokec9 .\cf5 \strokec5 addEventListener\cf9 \strokec9 (\cf10 \strokec10 'load'\cf9 \strokec9 ,\cf5 \strokec5  generatePlaceholderQr\cf9 \strokec9 );\cf5 \cb1 \strokec5 \
-\
-\cb3     \cf6 \strokec6 </\cf2 \strokec2 script\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\pard\pardeftab720\partightenfactor0
-\cf6 \cb3 \strokec6 </\cf2 \strokec2 body\cf6 \strokec6 >\cf5 \cb1 \strokec5 \
-\cf6 \cb3 \strokec6 </\cf2 \strokec2 html\cf6 \strokec6 >}
+    <!-- 3. Google Fonts for a clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Ensure the QR code canvas/img fills its container */
+        #qrcode > * {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-start justify-center min-h-screen p-4 py-8">
+
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg">
+        
+        <!-- Header Section with Razorpay Theme -->
+        <div class="bg-blue-600 text-white p-6 rounded-t-xl">
+            <h1 class="text-2xl md:text-3xl font-bold">Dynamic UPI QR Code Generator</h1>
+            <p class="text-blue-200 mt-1">Real-time QR codes for seamless payments.</p>
+        </div>
+
+        <div class="p-6 md:p-8" id="formContainer">
+            <!-- Form Section -->
+            <div class="grid grid-cols-1 gap-6">
+                
+                <!-- Payee Name -->
+                <div>
+                    <label for="payeeName" class="block text-sm font-medium text-gray-700 mb-1">Your Name (Payee)</label>
+                    <input type="text" id="payeeName" placeholder="e.g. Acme Fresh Produce" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                </div>
+
+                <!-- UPI ID Input -->
+                <div>
+                    <label for="upiId" class="block text-sm font-medium text-gray-700 mb-1">Your UPI ID (VPA)</label>
+                    <input type="text" id="upiId" placeholder="yourname@oksbi" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                </div>
+
+                <!-- Optional Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount (Optional)</label>
+                        <input type="number" id="amount" placeholder="e.g. 100" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks (Optional)</label>
+                        <input type="text" id="remarks" placeholder="e.g. For Invoice #123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                    </div>
+                </div>
+
+                <!-- QR Code Display Section (Now always visible) -->
+                <div id="qrCodeContainer" class="flex flex-col items-center pt-4 border-t mt-4">
+                    <h2 id="qrTitle" class="text-lg font-semibold text-gray-700 mb-4">QR Code Preview</h2>
+                    <div id="qrcode" class="p-4 bg-white border rounded-lg shadow-inner w-64 h-64"></div>
+                    <p id="qrHelperText" class="text-gray-500 text-sm mt-2 text-center">Enter your details above to generate a QR code.</p>
+                    <button id="downloadBtn" class="mt-6 w-full md:w-auto bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                        Download as PNG
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Element Selectors ---
+        const formContainer = document.getElementById('formContainer');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const qrcodeDiv = document.getElementById('qrcode');
+        const qrTitle = document.getElementById('qrTitle');
+        const qrHelperText = document.getElementById('qrHelperText');
+        
+        // Input fields
+        const payeeNameInput = document.getElementById('payeeName');
+        const upiIdInput = document.getElementById('upiId');
+        const amountInput = document.getElementById('amount');
+        const remarksInput = document.getElementById('remarks');
+
+        let qrcode = null; // To hold the QRCode object
+
+        // --- Placeholder QR Generation ---
+        const generatePlaceholderQr = () => {
+            qrcodeDiv.innerHTML = ''; // Clear previous QR
+            new QRCode(qrcodeDiv, {
+                text: "https://github.com/srikanthlogic/CashlessConsumer", // Generic, non-payable link
+                width: 256,
+                height: 256,
+                colorDark: "#d1d5db", // gray-300
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            qrTitle.textContent = 'QR Code Preview';
+            qrHelperText.textContent = 'Enter your details above to generate a QR code.';
+            downloadBtn.disabled = true; // Disable download for placeholder
+        };
+
+        // --- Core Logic: Generate Real QR Code Dynamically ---
+        const generateRealQrCode = () => {
+            const payeeName = payeeNameInput.value.trim();
+            const payeeAddress = upiIdInput.value.trim();
+            const amount = amountInput.value.trim();
+            const remarks = remarksInput.value.trim();
+
+            // 1. Check for valid inputs
+            const isValid = payeeName && payeeAddress && payeeAddress.includes('@');
+
+            if (!isValid) {
+                generatePlaceholderQr(); // If inputs become invalid, revert to placeholder
+                return;
+            }
+
+            // 2. Construct the UPI String
+            let upiString = `upi://pay?pa=${encodeURIComponent(payeeAddress)}&pn=${encodeURIComponent(payeeName)}`;
+            if (amount) {
+                upiString += `&am=${encodeURIComponent(amount)}`;
+            }
+            if (remarks) {
+                upiString += `&tn=${encodeURIComponent(remarks)}`;
+            }
+            upiString += '&cu=INR';
+
+            // 3. Generate the Real QR Code
+            qrcodeDiv.innerHTML = ''; // Clear placeholder
+            qrcode = new QRCode(qrcodeDiv, {
+                text: upiString,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // 4. Update UI text and enable download
+            qrTitle.textContent = 'Your QR Code is Ready!';
+            qrHelperText.textContent = 'Scan this with any UPI app.';
+            downloadBtn.disabled = false;
+        };
+
+        // --- Event Listeners ---
+
+        // Listen for any input change in the form container
+        formContainer.addEventListener('input', generateRealQrCode);
+
+        // Event Listener for the Download Button
+        downloadBtn.addEventListener('click', () => {
+            if (downloadBtn.disabled) return; // Extra safety check
+
+            const qrImage = qrcodeDiv.querySelector('img');
+            if (qrImage) {
+                const link = document.createElement('a');
+                link.href = qrImage.src;
+                const safeFileName = payeeNameInput.value.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                link.download = `upi-qr-code-${safeFileName || 'payment'}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+
+        // --- Initial Load ---
+        // Generate the placeholder QR as soon as the page loads
+        window.addEventListener('load', generatePlaceholderQr);
+
+    </script>
+</body>
+</html>
