@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced UPI QR Code Generator</title>
+    <title>Free UPI QR Code Generator - Razorpay</title>
     
     <!-- 1. Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,12 +14,19 @@
     <!-- 3. Google Fonts for a clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- 4. Alpine.js for FAQ interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- 5. html2canvas for downloading the entire card -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         /* Use the Inter font family */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
         }
         /* Ensure the QR code canvas/img fills its container */
         #qrcode > * {
@@ -28,57 +35,178 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 flex items-start justify-center min-h-screen p-4 py-8">
+<body class="text-gray-800">
 
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg">
-        
-        <!-- Header Section with Razorpay Theme -->
-        <div class="bg-blue-600 text-white p-6 rounded-t-xl">
-            <h1 class="text-2xl md:text-3xl font-bold">Dynamic UPI QR Code Generator</h1>
-            <p class="text-blue-200 mt-1">Real-time QR codes for seamless payments.</p>
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 lg:px-8 flex items-center justify-between h-16">
+            <!-- Logo and Nav Links -->
+            <div class="flex items-center space-x-8">
+                <!-- Razorpay Logo Image -->
+                <a href="#" class="flex-shrink-0">
+                    <img src="https://razorpay.com/newsroom-content/uploads/2020/12/output-onlinepngtools-1-1.png" alt="Razorpay Logo" class="h-8">
+                </a>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="https://razorpay.com/payment-gateway/" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors">Payment Gateway</a>
+                    <a href="https://razorpay.com/payment-links/" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors">Payment Links</a>
+                    <a href="https://razorpay.com/blog/" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors">Blog</a>
+                    <a href="https://razorpay.com/learn/" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors">Learn</a>
+                </div>
+            </div>
+            <!-- Mobile Menu Button (optional, for future use) -->
+            <div class="lg:hidden">
+                <button class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 lg:px-8 py-12">
+        <!-- Title Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-800">Free UPI QR Code Generator</h1>
+            <p class="mt-4 text-lg text-gray-600">Real-time QR codes for seamless payments.</p>
         </div>
 
-        <div class="p-6 md:p-8" id="formContainer">
-            <!-- Form Section -->
-            <div class="grid grid-cols-1 gap-6">
-                
-                <!-- Payee Name -->
-                <div>
-                    <label for="payeeName" class="block text-sm font-medium text-gray-700 mb-1">Your Name (Payee)</label>
-                    <input type="text" id="payeeName" placeholder="e.g. Acme Fresh Produce" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                </div>
-
-                <!-- UPI ID Input -->
-                <div>
-                    <label for="upiId" class="block text-sm font-medium text-gray-700 mb-1">Your UPI ID (VPA)</label>
-                    <input type="text" id="upiId" placeholder="yourname@oksbi" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                </div>
-
-                <!-- Optional Fields -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount (Optional)</label>
-                        <input type="number" id="amount" placeholder="e.g. 100" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+        <!-- Two-Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+            
+            <!-- Left Column: Form and How-to -->
+            <div class="space-y-8">
+                <!-- Form Card -->
+                <div class="bg-white p-8 rounded-xl shadow-md" id="formContainer">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label for="payeeName" class="block text-sm font-medium text-gray-700 mb-1">Your Name (Payee)</label>
+                            <input type="text" id="payeeName" placeholder="e.g. Acme Fresh Produce" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="upiId" class="block text-sm font-medium text-gray-700 mb-1">Your UPI ID (VPA)</label>
+                            <input type="text" id="upiId" placeholder="yourname@oksbi" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount (Optional)</label>
+                                <input type="number" id="amount" placeholder="e.g. 100" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                            </div>
+                            <div>
+                                <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks (Optional)</label>
+                                <input type="text" id="remarks" placeholder="e.g. For Invoice #123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks (Optional)</label>
-                        <input type="text" id="remarks" placeholder="e.g. For Invoice #123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                    </div>
                 </div>
-
-                <!-- QR Code Display Section (Now always visible) -->
-                <div id="qrCodeContainer" class="flex flex-col items-center pt-4 border-t mt-4">
-                    <h2 id="qrTitle" class="text-lg font-semibold text-gray-700 mb-4">QR Code Preview</h2>
-                    <div id="qrcode" class="p-4 bg-white border rounded-lg shadow-inner w-64 h-64"></div>
-                    <p id="qrHelperText" class="text-gray-500 text-sm mt-2 text-center">Enter your details above to generate a QR code.</p>
-                    <button id="downloadBtn" class="mt-6 w-full md:w-auto bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
-                        Download as PNG
-                    </button>
+                <!-- How it works Card -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">How It Works</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4">
+                                <p class="font-semibold">Enter Your Details</p>
+                                <p class="text-gray-600 text-sm">Fill in your name and UPI ID in the form above.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4">
+                                <p class="font-semibold">Get Your QR Code</p>
+                                <p class="text-gray-600 text-sm">Your custom QR code is generated instantly on the right.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">3</div>
+                            <div class="ml-4">
+                                <p class="font-semibold">Download and Share</p>
+                                <p class="text-gray-600 text-sm">Save the QR as a PNG to print or share digitally.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
+            <!-- Right Column: QR Code Display -->
+            <div id="qrCodeContainer" class="flex flex-col items-center bg-white p-8 rounded-xl shadow-md lg:sticky lg:top-24">
+                <h2 id="qrTitle" class="text-xl font-bold text-gray-800 mb-4">QR Code Preview</h2>
+                <div id="qrcode" class="p-4 bg-white border rounded-lg shadow-inner w-64 h-64"></div>
+                <p id="qrHelperText" class="text-gray-600 text-sm mt-4 text-center">Enter your details on the left to generate a QR code.</p>
+                <button id="downloadBtn" class="mt-6 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                    Download as PNG
+                </button>
+                <div class="w-full border-t my-6"></div>
+                <p class="text-sm font-medium text-gray-700">Scan and Pay with Any UPI App</p>
+                <div class="flex items-center justify-center space-x-4 mt-4">
+                    <!-- UPI Logo -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI Logo" class="h-6" crossorigin="anonymous">
+                    <!-- GPay Logo -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png" alt="Google Pay Logo" class="h-6" crossorigin="anonymous">
+                    <!-- PhonePe Logo -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/1280px-PhonePe_Logo.svg.png" alt="PhonePe Logo" class="h-6" crossorigin="anonymous">
+                    <!-- Amazon Pay Logo -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbHjeFkVdRyLHW4XFTKxvfo0rt3L4LsQeQ-g&s" alt="Amazon Pay Logo" class="h-6" crossorigin="anonymous">
+                </div>
+                <p class="text-xs text-gray-500 mt-6 flex items-center">Create Your Custom UPI Code with Razorpay <svg class="w-4 h-4 ml-1 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg></p>
             </div>
         </div>
-    </div>
+
+        <!-- FAQ Section -->
+        <section class="mt-24" x-data="{ openFaq: null }">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800">Frequently Asked Questions</h2>
+                <div class="mt-8 space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full flex justify-between items-center p-5 text-left">
+                            <span class="font-semibold">Is this UPI QR code generator free to use?</span>
+                            <svg class="w-5 h-5 transition-transform" :class="{ 'transform rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="openFaq === 1" x-collapse class="p-5 pt-0 text-gray-600">
+                            <p>Yes, absolutely! This tool is completely free for anyone to use. You can generate as many QR codes as you need for your personal or business use without any charges.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full flex justify-between items-center p-5 text-left">
+                            <span class="font-semibold">Do I need a Razorpay account to use this?</span>
+                            <svg class="w-5 h-5 transition-transform" :class="{ 'transform rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="openFaq === 2" x-collapse class="p-5 pt-0 text-gray-600">
+                            <p>No, you do not need a Razorpay account to generate a basic QR code. This tool works with any valid UPI ID from any bank or UPI application (like Google Pay, PhonePe, Paytm, etc.).</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full flex justify-between items-center p-5 text-left">
+                            <span class="font-semibold">Will the generated QR code expire?</span>
+                            <svg class="w-5 h-5 transition-transform" :class="{ 'transform rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="openFaq === 3" x-collapse class="p-5 pt-0 text-gray-600">
+                            <p>No, the static QR code you generate will never expire. It is linked directly to your UPI ID. As long as your UPI ID is active with your bank, the QR code will continue to work.</p>
+                        </div>
+                    </div>
+                     <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button @click="openFaq = openFaq === 4 ? null : 4" class="w-full flex justify-between items-center p-5 text-left">
+                            <span class="font-semibold">Can I set a fixed amount in the QR code?</span>
+                            <svg class="w-5 h-5 transition-transform" :class="{ 'transform rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="openFaq === 4" x-collapse class="p-5 pt-0 text-gray-600">
+                            <p>Yes. By entering a value in the "Amount (Optional)" field, the QR code will be embedded with that specific amount. When a customer scans it, their UPI app will automatically fill in the amount, preventing payment errors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 mt-24">
+        <div class="container mx-auto px-4 lg:px-8 py-6 text-center text-sm">
+            <p>&copy; 2024 Razorpay. All Rights Reserved. This is a tool provided for the community.</p>
+        </div>
+    </footer>
 
     <script>
         // --- Element Selectors ---
@@ -100,7 +228,7 @@
         const generatePlaceholderQr = () => {
             qrcodeDiv.innerHTML = ''; // Clear previous QR
             new QRCode(qrcodeDiv, {
-                text: "https://github.com/srikanthlogic/CashlessConsumer", // Generic, non-payable link
+                text: "https://razorpay.com", // Generic, non-payable link
                 width: 256,
                 height: 256,
                 colorDark: "#d1d5db", // gray-300
@@ -108,7 +236,7 @@
                 correctLevel: QRCode.CorrectLevel.H
             });
             qrTitle.textContent = 'QR Code Preview';
-            qrHelperText.textContent = 'Enter your details above to generate a QR code.';
+            qrHelperText.textContent = 'Enter your details on the left to generate a QR code.';
             downloadBtn.disabled = true; // Disable download for placeholder
         };
 
@@ -119,15 +247,13 @@
             const amount = amountInput.value.trim();
             const remarks = remarksInput.value.trim();
 
-            // 1. Check for valid inputs
             const isValid = payeeName && payeeAddress && payeeAddress.includes('@');
 
             if (!isValid) {
-                generatePlaceholderQr(); // If inputs become invalid, revert to placeholder
+                generatePlaceholderQr();
                 return;
             }
 
-            // 2. Construct the UPI String
             let upiString = `upi://pay?pa=${encodeURIComponent(payeeAddress)}&pn=${encodeURIComponent(payeeName)}`;
             if (amount) {
                 upiString += `&am=${encodeURIComponent(amount)}`;
@@ -137,8 +263,7 @@
             }
             upiString += '&cu=INR';
 
-            // 3. Generate the Real QR Code
-            qrcodeDiv.innerHTML = ''; // Clear placeholder
+            qrcodeDiv.innerHTML = '';
             qrcode = new QRCode(qrcodeDiv, {
                 text: upiString,
                 width: 256,
@@ -148,37 +273,42 @@
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            // 4. Update UI text and enable download
             qrTitle.textContent = 'Your QR Code is Ready!';
             qrHelperText.textContent = 'Scan this with any UPI app.';
             downloadBtn.disabled = false;
         };
 
         // --- Event Listeners ---
-
-        // Listen for any input change in the form container
         formContainer.addEventListener('input', generateRealQrCode);
 
-        // Event Listener for the Download Button
         downloadBtn.addEventListener('click', () => {
-            if (downloadBtn.disabled) return; // Extra safety check
+            if (downloadBtn.disabled) return;
 
-            const qrImage = qrcodeDiv.querySelector('img');
-            if (qrImage) {
+            const qrCodeDisplayCard = document.getElementById('qrCodeContainer');
+            
+            // Temporarily hide the button so it's not in the screenshot
+            downloadBtn.style.display = 'none';
+
+            // Use html2canvas to capture the div
+            html2canvas(qrCodeDisplayCard, {
+                scale: 2, // Render at a higher resolution for better quality
+                useCORS: true // Important for fetching external images (logos)
+            }).then(canvas => {
                 const link = document.createElement('a');
-                link.href = qrImage.src;
+                link.href = canvas.toDataURL('image/png');
                 const safeFileName = payeeNameInput.value.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                link.download = `upi-qr-code-${safeFileName || 'payment'}.png`;
+                link.download = `razorpay-upi-qr-${safeFileName || 'payment'}.png`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            }
+            }).finally(() => {
+                // Always show the button again, even if there was an error
+                downloadBtn.style.display = 'block';
+            });
         });
 
         // --- Initial Load ---
-        // Generate the placeholder QR as soon as the page loads
         window.addEventListener('load', generatePlaceholderQr);
-
     </script>
 </body>
 </html>
